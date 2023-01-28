@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+			
+<mapper namespace="BoardDAO">
+
+	<resultMap type="board" id="boardResult">
+		<id property="bseq" column="bseq"/>
+		<result property="boardnum" column="boardnum"/>
+		<result property="title" column="title"/>
+		<result property="nickname" column="nickname"/>
+		<result property="content" column="content"/>
+		<result property="filename" column="filename"/>
+		<result property="writedate" column="writedate"/>
+		<result property="like_num" column="like_num"/>
+		<result property="unlike_num" column="unlike_num"/>
+		<result property="cnt" column="cnt"/>
+		<result property="UserId" column="UserId"/>
+	</resultMap>
+
+	<select id="getBoard" resultType="board">
+		<![CDATA[
+			select * from "reviewboard" where "bseq" = #{bseq}
+		]]>
+	</select>
+</mapper>
