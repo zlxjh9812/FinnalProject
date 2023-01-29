@@ -12,7 +12,7 @@
 		<typeAlias type="com.spring.biz.userInfo.UserInfoVO" alias="userInfo"/>
 		<typeAlias type="com.spring.biz.tableNum.tableNumVO" alias="tableValue"/>
 		<typeAlias type="com.spring.biz.reportComment.reportCommentVO" alias="reportComment"/>
-		<typeAlias type="com.spring.biz.board.boardVO" alias="board"/>
+				<typeAlias alias="board" type="com.spring.biz.board.MovieBoardVO"></typeAlias>
 	</typeAliases>
 	
 	<!-- Sql Mapper 설정 -->
