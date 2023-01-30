@@ -110,4 +110,10 @@ public class adminControler {
 		}
 		return "index.jsp";
 	}
+	@RequestMapping(value = "/test.do")
+	public String test() {
+		// Model 정보 저장
+				
+		return "/WEB-INF/views/123.jsp";
+	}
 }

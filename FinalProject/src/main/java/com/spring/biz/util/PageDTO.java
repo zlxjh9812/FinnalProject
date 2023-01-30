@@ -9,7 +9,7 @@ public class PageDTO {
 	  private int totalPage;
 	  private SearchCriteria cri;
 	  private int displayPageItems = 10;
-	private MovieBoardVO vo;
+	  private MovieBoardVO vo;
 
 	  
 	  public PageDTO(MovieBoardVO vo, int totalPage) {

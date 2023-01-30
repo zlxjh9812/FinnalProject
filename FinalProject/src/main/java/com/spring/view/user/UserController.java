@@ -88,7 +88,7 @@ public class UserController {
 	            out.println("<script>alert('로그인 정보를 확인해주세요.'); history.go(-1);</script>");
 	            out.flush();
 			System.out.println("로그인 실패");
-			return "index.jsp";
+			return "web-inf/index.jsp";
 		}
 		
 	}
