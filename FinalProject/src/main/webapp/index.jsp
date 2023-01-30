@@ -327,6 +327,9 @@ border-radius: 15px;
 		border-radius: 0.5em;
 
       }
+      #header{
+      	 padding-right: 15px;
+      }
    </style>
   
 </head>
@@ -402,13 +405,13 @@ border-radius: 15px;
 				<c:otherwise>
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">리트리버</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2">${UserInfo.nickname }</span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>리트리버</h6>
-              <span>강아지</span>
+              <h6>${User.userId }</h6>
+              <span>${UserInfo.nickname }</span>
             </li>
             <li>
               <hr class="dropdown-divider">
@@ -445,7 +448,7 @@ border-radius: 15px;
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" href="logout.do">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>로그 아웃</span>
               </a>

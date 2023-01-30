@@ -81,7 +81,7 @@ public class UserController {
 			model.addAttribute("User", userService.idCheck(vo));
 			System.out.println(vo.getUserId());
 			model.addAttribute("UserInfo",userinfoservice.getUserInfo(Ivo));
-			return "index.jsp";
+			return "testMovie.do";
 		}else {
 			 	response.setContentType("text/html; charset=UTF-8");
 	            PrintWriter out = response.getWriter();
@@ -105,7 +105,7 @@ public class UserController {
         out.println("<script>alert('로그아웃되었습니다.');location.href='index.jsp';</script>");
         out.flush();
 		// 2. 세션 종료후, 메인 화면으로 이동한다.
-		return "index.jsp";
+		return "testMovie.do";
 
 	}
 

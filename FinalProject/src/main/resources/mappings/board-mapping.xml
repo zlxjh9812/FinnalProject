@@ -19,50 +19,50 @@
 	</resultMap>
 
 	<insert id="insertBoard">
-		INSERT INTO REVIEWBOARD(BSEQ,BOARDNUM,TITLE,NICKNAME,CONTENT,FILENAME,LIKE_NUM,UNLIKE_NUM,CNT,USERID) 
+		<![CDATA[INSERT INTO  "reviewboard"("bseq", "boardnum", "title", "nickname",  "content", "filename", "writedate", "like_num", "unlike_num", "cnt", "UserId")
 		VALUES ((select nvl(max(bseq), 0) + 1 from reviewboard), #{boardnum}, #{title},#{nickname}, #{content}, #{filename}
-		, #{like_num}, #{unlike_num}, #{cnt}, #{userId})
+		, #{like_num}, #{unlike_num}, #{cnt}, #{userId})]]>
 	</insert>
 	
 	<update id="updateBoard">
 		<![CDATA[
-			UPDATE REVIEWBOARD SET
-				TITLE = #{title}, 
-				CONTENT = #{content} 
-			WHERE BSEQ = #{bseq}
+			UPDATE "reviewboard" SET
+				"title" = #{title}, 
+				"content" = #{content} 
+			WHERE "bseq" = #{bseq}
 		]]>
 	</update>
 	
 	<delete id="deleteBoard">
 		<![CDATA[
-			DELETE FROM REVIEWBOARD 
-			WHERE BSEQ = #{bseq}
+			DELETE FROM "reviewboard" 
+			WHERE "bseq" = #{bseq}
 		]]>
 	</delete>
 	
 	<select id="getBoard" resultType="board">
 		<![CDATA[
 			SELECT * 
-			FROM REVIEWBOARD 
-			WHERE BSEQ = #{bseq}
+			FROM "reviewboard" 
+			WHERE "bseq" = #{bseq}
 		]]>
 	</select>
 	
 	<select id="getBoardList" resultMap="boardResult">
 		SELECT * 
 		FROM(
-			SELECT ROWNUM RN, BSEQ, BOARDNUM, TITLE, NICKNAME, CONTENT,FILENAME,WRITEDATE, LIKE_NUM, UNLIKE_NUM, CNT, USERID 
+			SELECT ROWNUM RN, "bseq", "boardnum", "title", "nickname",  "content", "filename", "writedate", "like_num", "unlike_num", "cnt", "UserId" 
 			FROM(
 				SELECT * 
 				FROM "reviewboard" 
-				WHERE boardnum = #{boardnum}
+				WHERE "boardnum" = #{boardnum}
 		<if test="searchCondition == 'TITLE'">
-			AND TITLE LIKE '%'||#{searchKeyword}||'%'
+			AND "title" LIKE '%'||#{searchKeyword}||'%'
 		</if>
 		<if test="searchCondition == 'CONTENT'">
-			AND CONTENT LIKE '%'||#{searchKeyword}||'%'
+			AND "content" LIKE '%'||#{searchKeyword}||'%'
 		</if>
-		ORDER BY BSEQ DESC
+		ORDER BY "bseq" DESC
 		) 
 			<![CDATA[
     		WHERE ROWNUM <= #{pageNum} * #{amount}
@@ -77,7 +77,7 @@
 	<select id="getSearchReview" resultMap="boardResult">
 		SELECT * 
 		FROM(
-			SELECT ROWNUM RN, BSEQ, BOARDNUM, TITLE, NICKNAME, CONTENT,FILENAME,WRITEDATE, LIKE_NUM, UNLIKE_NUM, CNT, USERID 
+			SELECT ROWNUM RN, "bseq", "boardnum", "title", "nickname",  "content", "filename", "writedate", "like_num", "unlike_num", "cnt", "UserId"
 			FROM(
 				SELECT * 
 				FROM REVIEWBOARD 
@@ -100,15 +100,15 @@
 	
 		<select id="getBoardListMain" resultMap="boardResult">
 		SELECT * 
-		FROM REVIEWBOARD 
+		FROM "reviewboard"  
 		WHERE 1 = 1 
 		<if test="searchCondition == 'TITLE'">
-			AND TITLE LIKE '%'||#{searchKeyword}||'%'
+			AND "title" LIKE '%'||#{searchKeyword}||'%'
 		</if>
 		<if test="searchCondition == 'CONTENT'">
-			AND CONTENT LIKE '%'||#{searchKeyword}||'%'
+			AND "content" LIKE '%'||#{searchKeyword}||'%'
 		</if>
-		ORDER BY LIKE_NUM DESC
+		ORDER BY "like_num" DESC
 	</select>
 	
 	
@@ -116,44 +116,44 @@
 	
 	<select id="getTotalPages" resultType="int">
 		SELECT count(*) 
-		FROM REVIEWBOARD 
-		WHERE boardnum=#{boardnum} 
+		FROM "reviewboard" 
+		WHERE "boardnum"=#{boardnum} 
 		<if test="searchCondition == 'TITLE'">
-			AND TITLE LIKE '%'||#{searchKeyword}||'%'
+			AND "title" LIKE '%'||#{searchKeyword}||'%'
 		</if>
 		<if test="searchCondition == 'CONTENT'">
-			AND CONTENT LIKE '%'||#{searchKeyword}||'%'
+			AND "content" LIKE '%'||#{searchKeyword}||'%'
 		</if>
   	</select>
 	
 	<select id="getBoardListWithPaging" resultMap="boardResult">
 		<![CDATA[
-		SELECT BSEQ, TITLE, NICKNAME, CONTENT,FILENAME,LIKE_NUM, UNLIKE_NUM, CNT
+		SELECT "bseq", "title", "nickname", "content","filename","like_num", "unlike_num", "cnt"
 		FROM (
-			SELECT ROWNUM RN, BSEQ, TITLE, NICKNAME, CONTENT,LIKE_NUM, UNLIKE_NUM, FILENAME, CNT  
-			FROM REVIEWBOARD 
+			SELECT "bseq", "title", "nickname", "content","filename","like_num", "unlike_num", "cnt"
+			FROM "reviewboard" 
     		WHERE ROWNUM <= #{pageNum} * #{amount} 
-    		ORDER BY BSEQ DESC 
+    		ORDER BY "bseq" DESC 
     	) 
   		WHERE RN > (#{pageNum} - 1) * #{amount}
   		]]>
   	</select>
 
 	<select id="getBoardListWithDynamicPaging" resultMap="boardResult">
-		SELECT BSEQ, TITLE, NICKNAME, CONTENT,FILENAME,LIKE_NUM, UNLIKE_NUM, CNT  
+		SELECT "bseq", "title", "nickname", "content","filename","like_num", "unlike_num", "cnt"
 		FROM (
-			SELECT ROWNUM RN, BSEQ, TITLE, NICKNAME, CONTENT,LIKE_NUM, UNLIKE_NUM, FILENAME, CNT 
+			SELECT ROWNUM RN,"bseq", "title", "nickname", "content","filename","like_num", "unlike_num", "cnt"
 			FROM (
 				SELECT * 
-				FROM REVIEWBOARD 
-				WHERE boardnum = 1
+				FROM "reviewboard"  
+				WHERE "boardnum"=#{boardnum} 
 				<if test="searchCondition == 'TITLE'">
-					AND TITLE LIKE '%'||#{searchKeyword}||'%'
+					AND "title" LIKE '%'||#{searchKeyword}||'%'
 				</if>
 				<if test="searchCondition == 'CONTENT'">
-					AND CONTENT LIKE '%'||#{searchKeyword}||'%'
+					AND "content" LIKE '%'||#{searchKeyword}||'%'
 				</if>
-				ORDER BY BSEQ DESC
+				ORDER BY "bseq" DESC
 			) 
 			<![CDATA[
     		WHERE ROWNUM <= #{pageNum} * #{amount}
