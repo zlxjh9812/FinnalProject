@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<resources mapping="/ckeditor/**" location="/resources/ckeditor/" />
 </head>
 <body>
 <script type="text/javascript">
@@ -73,7 +74,7 @@ function test() {
 		<input type="submit" value="전송">
 	</form>
 
-	<a href="test.do">test</a>
+	<a href="test123.do">test</a>
 	
 	  <select id="SC" name="SC" >
 		<option value="movie">영화</option>
@@ -84,7 +85,10 @@ function test() {
 	</select>
 	<button id = "Test">a</button>
 	
+"<p>1234<img alt="" height="176" src="/biz/img/c075f54a-ac6e-4d2b-99f2-2f292330a897" width="564" />1234</p>
 
+<p>&#53580;&#49828;&#53944;</p>
+"
 
 <div class="ui-widget">
 

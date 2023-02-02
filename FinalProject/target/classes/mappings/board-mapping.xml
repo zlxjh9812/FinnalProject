@@ -19,10 +19,19 @@
 	</resultMap>
 
 	<insert id="insertBoard">
-		<![CDATA[INSERT INTO  "reviewboard"("bseq", "boardnum", "title", "nickname",  "content", "filename", "writedate", "like_num", "unlike_num", "cnt", "UserId")
-		VALUES ((select nvl(max(bseq), 0) + 1 from reviewboard), #{boardnum}, #{title},#{nickname}, #{content}, #{filename}
-		, #{like_num}, #{unlike_num}, #{cnt}, #{userId})]]>
+		 <![CDATA[INSERT INTO  "reviewboard"("bseq", "boardnum", "title", "nickname",  "content", "filename", "like_num", "unlike_num", "cnt", "UserId","writedate")
+		VALUES ((select nvl(max("bseq"), 0) + 1 from "reviewboard"), #{boardnum}, #{title},#{nickname}, #{content}, null
+		, 0, 0, 0, #{userId},sysdate)]]>
+		
+		
 	</insert>
+	
+	<select id="getTestboard">
+		<![CDATA[
+		select * from test where seq = #{seq}
+		]]>
+		
+	</select>
 	
 	<update id="updateBoard">
 		<![CDATA[

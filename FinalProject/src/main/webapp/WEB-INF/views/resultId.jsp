@@ -39,8 +39,8 @@
     
 
         <!-- 6. 가입하기 버튼 -->
-         <input type="button" value="메인 패이지로 돌아가기" id="joinbutton" onclick = "location.href='index.jsp'">
-        <input type="button" value="비밀번호 찾기" id="joinbutton" onclick = "location.href='updatePassword.jsp'">
+         <input type="button" value="메인 패이지로 돌아가기" id="joinbutton" onclick = "location.href='testMovie.do?type=movie'">
+        <input type="button" value="비밀번호 찾기" id="joinbutton" onclick = "location.href='updatePasswordGo.do'">
         <!-- 7. 푸터 -->
         <div class="member-footer">
             <div>

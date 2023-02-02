@@ -595,8 +595,8 @@ border-radius: 15px;
 											<div class="member-footer">
 												<hr>
 												<div>
-													<a href="sign_up.jsp">회원가입</a> <a href="findId.jsp">아이디
-														찾기</a> <a href="updatePassword.jsp">비밀번호 찾기</a>
+													<a href="sign_up.jsp">회원가입</a> <a href="findIdgo.do">아이디
+														찾기</a> <a href="updatePasswordGo.do">비밀번호 찾기</a>
 												</div>
 											</div>
 										</form>
@@ -634,7 +634,7 @@ border-radius: 15px;
                         <p>${board.content }</p>
                         <p>작성자:${board.nickname }</p>
                         <p>추천:${board.like_num} &nbsp&nbsp 비추:	 ${board.unlike_num}</p>
-                        <a href="#">바로가기</a>
+                        <a href="getBoard.do?bseq=${board.bseq }">바로가기</a>
                     </div>
          
  				</c:forEach>

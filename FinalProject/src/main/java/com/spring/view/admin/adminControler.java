@@ -46,7 +46,7 @@ public class adminControler {
 				System.out.println("error2");
 //				model.addAttribute("boardList", boardService.getBoardList(vo));	// Model 정보 저장
 				System.out.println(reviewService.getBoardListWithDynamicPaging(cri).get(0).getReportSeq());
-		return "admin.jsp";
+		return "admin";
 	}
 	
 	@RequestMapping(value = "/getCommentReport.do")
@@ -59,21 +59,21 @@ public class adminControler {
 		System.out.println("error1");
 		model.addAttribute("boardList", commentService.getBoardListWithDynamicPaging(cri));	// Model 정보 저장
 		model.addAttribute("pageMaker", pageMaker);
-		return "reportComment.jsp";
+		return "reportComment";
 	}
 	@RequestMapping(value = "/getReportDetail.do")
 	public String getReportDetail(Model model ,ReportReviewVO vo) {
 		List<ReportReviewVO> list = reviewService.getReportReviewDetail(vo);
 		System.out.println(list);
 		model.addAttribute("reportDetail",list);
-		return "reportDetail.jsp";
+		return "reportDetail";
 	}
 	@RequestMapping(value = "/getReportCommentDetail.do")
 	public String getReportCommentDetail(Model model ,reportCommentVO vo) {
 		List<reportCommentVO> list = commentService.getReportCommentDetail(vo);
 		System.out.println(list);
 		model.addAttribute("reportDetail",list);
-		return "reportDetail.jsp";
+		return "reportDetail";
 	}
 	@RequestMapping(value = "/insertReviewReport.do")
 	public String insertReviewRepoer(ReportReviewVO vo,HttpServletResponse response) throws IOException {
@@ -110,10 +110,5 @@ public class adminControler {
 		}
 		return "index.jsp";
 	}
-	@RequestMapping(value = "/test.do")
-	public String test() {
-		// Model 정보 저장
-				
-		return "/WEB-INF/views/123.jsp";
-	}
+	
 }
