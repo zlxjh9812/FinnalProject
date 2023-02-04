@@ -7,7 +7,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-
+<!-- 소스 다운 -->
+<script src="https://unpkg.com/@yaireo/tagify"></script>
+<!-- 폴리필 (구버젼 브라우저 지원) -->
+<script src="https://unpkg.com/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+<link href="https://unpkg.com/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
+ 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -61,10 +66,31 @@ cnt.addEventListener("click",function(){
 	console.log(" select",sel);
 	alert(select);
 })
-function test() {
-	
-	 console.log(" select",sel);
-}
+   const input = document.querySelector('input[name=basic]');
+    let tagify = new Tagify(input); // initialize Tagify
+    
+    // 태그가 추가되면 이벤트 발생
+    tagify.on('add', function() {
+      console.log(tagify.value); // 입력된 태그 정보 객체
+    });
+    var TagValues = JSON.parse($('[name=tags]').tagify().val())
+    var TagArray = []
+
+    for(let i=0;i<TagValues.length;i++){
+        TagArray.push(TagValues[i].value)
+        console.log(TagValues[i].value);
+    }
+
+    var dataToSend = $(this).serializeArray();
+    for (let index = 0; index < dataToSend.length; ++index) {
+        if (dataToSend[index].name == "tags") {
+            dataToSend[index].value = TagArray;
+            console.log(TagArray);
+            break;
+        }
+    }
+
+	  
 });
 </script>
 
@@ -84,12 +110,11 @@ function test() {
 		<option value="SearchId">아이디검색</option>
 	</select>
 	<button id = "Test">a</button>
-	
-"<p>1234<img alt="" height="176" src="/biz/img/c075f54a-ac6e-4d2b-99f2-2f292330a897" width="564" />1234</p>
-
-<p>&#53580;&#49828;&#53944;</p>
-"
-
+<form action="testTag.do" method="post" id = "frm">
+<input name='basic'>
+<button id = "btn">button</button>
+<input type = "submit" value="ok">
+</form>
 <div class="ui-widget">
 
   <label for="city">도시: </label>
