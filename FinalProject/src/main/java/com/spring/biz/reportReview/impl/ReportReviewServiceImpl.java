@@ -58,4 +58,16 @@ public class ReportReviewServiceImpl implements ReportReviewService{
 		return reportReviewDAO.getValid(vo);
 	}
 
+	@Override
+	public void updateReportReview(ReportReviewVO vo) {
+		// TODO Auto-generated method stub
+		reportReviewDAO.updateReportReview(vo);
+	}
+
+	@Override
+	public void deleteReportReview(ReportReviewVO vo) {
+		// TODO Auto-generated method stub
+		reportReviewDAO.deleteReportReview(vo);
+	}
+
 }

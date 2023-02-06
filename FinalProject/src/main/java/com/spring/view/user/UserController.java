@@ -3,6 +3,7 @@ package com.spring.view.user;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Calendar;
 import java.util.UUID;
 
 import javax.inject.Inject;
@@ -46,7 +47,10 @@ public class UserController {
 	@RequestMapping(value = "/insertUser.do")
 	public String insertUser(UserVO vo,HttpServletResponse response,UserInfoVO Ivo) throws IOException {
 		System.out.println("회원가입");
-		
+		int age = vo.getBirth();
+		Calendar now = Calendar.getInstance();
+		age = now.get(Calendar.YEAR)-(age/10000);
+		vo.setBirth(age);
 		vo.setPassword(pwdEncoder.encode(vo.getPassword()));
 		userService.insertUser(vo);
 		System.out.println("error1");

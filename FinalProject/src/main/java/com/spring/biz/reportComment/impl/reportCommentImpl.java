@@ -44,4 +44,9 @@ public class reportCommentImpl implements reportCommentService{
 		return reportcommentDAO.getValid(vo);
 	}
 
+	@Override
+	public void updateReportComment(reportCommentVO vo) {
+		reportcommentDAO.updateRepoerComment(vo);
+	}
+
 }

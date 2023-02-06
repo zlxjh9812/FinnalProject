@@ -16,6 +16,8 @@
 	<b>${board.nickname }</b>
 	<span id = "UserID"> ${board.userId }</span>
 	<h3>${board.content }</h3>
+	<h3>${board.report }</h3>
+	<h3>${board.writedate } 날짜</h3>
 	<button id = "report">신고하기</button>
 	<script type="text/javascript">
 		$("#report").on("click",function(e){

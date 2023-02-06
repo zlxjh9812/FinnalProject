@@ -15,6 +15,7 @@
 		<result property="unlike_num" column="UNLIKE_NUM"/>
 		<result property="cnt" column="CNT"/>
 		<result property="userId" column="USERID"/>
+		<result property="writdate" column="writedate"/>
 		
 	</resultMap>
 
@@ -25,6 +26,16 @@
 		
 		
 	</insert>
+	<update id="reportUpdateReviewY">
+		<![CDATA[
+			update "reviewboard" set "report" = 'Y' where "bseq" = #{bseq}
+		]]>
+	</update>
+	<update id="reportUpdateReviewN">
+		<![CDATA[
+			update "reviewboard" set "report" = 'N' where "bseq" = #{bseq}
+		]]>
+	</update>
 	<select id="getSeq" resultType="int">
 		 <![CDATA[select nvl(max("bseq"), 0) + 1 from "reviewboard"]]>
 	</select>

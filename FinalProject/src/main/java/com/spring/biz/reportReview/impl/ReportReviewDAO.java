@@ -48,4 +48,11 @@ public class ReportReviewDAO {
 	public int getValid(ReportReviewVO vo) {
 		return mybatis.selectOne("reportReviewDAO.getInvalid",vo);
 	}
+	public void updateReportReview(ReportReviewVO vo) {
+		mybatis.update("reportReviewDAO.updateReortReview", vo);
+	}
+	
+	public void deleteReportReview(ReportReviewVO vo) {
+		mybatis.delete("reportReviewDAO.deleteReportReview",vo);
+	}
 }

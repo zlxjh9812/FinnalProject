@@ -12,6 +12,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.spring.biz.UserBlackList.UserBlackListService;
+import com.spring.biz.UserBlackList.UserBlackListVO;
+import com.spring.biz.board.BoardService;
+import com.spring.biz.board.MovieBoardVO;
 import com.spring.biz.reportComment.reportCommentService;
 import com.spring.biz.reportComment.reportCommentVO;
 import com.spring.biz.reportReview.ReportReviewService;
@@ -20,6 +24,8 @@ import com.spring.biz.reportReview.ReportReviewVO;
 
 import com.spring.biz.tableNum.tableNumService;
 import com.spring.biz.tableNum.tableNumVO;
+import com.spring.biz.userInfo.UserInfoService;
+import com.spring.biz.userInfo.UserInfoVO;
 import com.spring.biz.util.PageDTO;
 import com.spring.biz.util.SearchCriteria;
 
@@ -31,6 +37,12 @@ public class adminControler {
 	private tableNumService tableNumService;
 	@Autowired
 	private reportCommentService commentService;
+	@Autowired
+	private UserInfoService userInfoService;
+	@Autowired
+	private UserBlackListService userBlackListService;
+	@Autowired
+	private BoardService boardService;
 	
 	@RequestMapping(value = "/getReviewReport.do")
 	public String getReviewReport(Model model,SearchCriteria cri) {
@@ -109,6 +121,47 @@ public class adminControler {
 	        out.flush();
 		}
 		return "index.jsp";
+	}
+	@RequestMapping(value = "/updateReportReview.do")
+	public String updateReportReview(ReportReviewVO vo,HttpServletResponse response,UserInfoVO Ivo,UserBlackListVO Bvo,MovieBoardVO Mvo) {
+//		System.out.println("error1");
+//		reviewService.updateReportReview(vo);
+//		System.out.println("error2");
+//		reviewService.deleteReportReview(vo);
+		System.out.println(vo.getTargetID());
+		Ivo.setUserId(vo.getTargetID());
+		Mvo.setBseq(vo.getSeq());
+		boardService.reportUpdateReviewY(Mvo);
+		System.out.println(Ivo.getUserId());
+		System.out.println(userInfoService.getUserInfo(Ivo));
+		userInfoService.updateUserReportCount(Ivo);
+		int count = userInfoService.getUserInfo(Ivo).getReportCount();
+		Bvo.setUserId(Ivo.getUserId());
+		switch (count) {
+		case 3: Bvo.setDate(3);
+				break;
+
+		case 6: Bvo.setDate(5);
+				break;
+
+		case 9: Bvo.setDate(10);
+				break;
+
+		case 12: Bvo.setDate(20);
+				break;
+
+		case 24: Bvo.setDate(50);
+				break;
+			
+		}
+		if(userBlackListService.getUser(Bvo)!=null) {
+			userBlackListService.updateReportUser(Bvo);
+			userInfoService.updateUserReportY(Ivo);
+		}else {
+			userBlackListService.insertReportUser(Bvo);
+			userInfoService.updateUserReportY(Ivo);
+		}
+		return "redirect:getReviewReport.do";
 	}
 	
 }

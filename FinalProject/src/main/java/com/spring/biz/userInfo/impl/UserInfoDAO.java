@@ -19,4 +19,13 @@ public class UserInfoDAO {
 	public UserInfoVO getUserInfo(UserInfoVO vo) {
 		return (UserInfoVO) myBatis.selectOne("UserInfoDAO.getUserInfo", vo);
 	}
+	public void updateUserReportCount(UserInfoVO vo) {
+		myBatis.update("UserInfoDAO.updateUserReportCount",vo);
+	}
+	public void updateUserReportY(UserInfoVO vo) {
+		myBatis.update("UserInfoDAO.updateUserReportY",vo);
+	}
+	public void updateUserReportN(UserInfoVO vo) {
+		myBatis.update("UserInfoDAO.updateUserReportN",vo);
+	}
 }

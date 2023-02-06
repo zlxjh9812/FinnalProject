@@ -61,7 +61,15 @@
 	<!-- 신고 중복체크 -->
 	<select id="getInvalid" resultType = "int">
 		<![CDATA[
-		select count(*) from "reportComment" where "bseq" = #{seq} and "UserId" = #{UserId}
+		select count(*) from "reportReview" where "bseq" = #{seq} and "UserId" = #{UserId}
 		]]>
 	</select>
+	<update id="updateReortReview">
+		<![CDATA[update "reviewboard" set "report"='Y' where "bseq" = #{seq}]]>
+	</update>
+	<delete id="deleteReportReview">
+		<![CDATA[
+			delete from "reportReview" where "bseq" = #{seq}
+		]]>
+	</delete>
 </mapper>

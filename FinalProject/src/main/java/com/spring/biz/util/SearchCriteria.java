@@ -11,7 +11,7 @@ public class SearchCriteria {
 	
 	public SearchCriteria() {
 		this.pageNum = 1;
-		this.amount = 2;
+		this.amount = 5;
 		this.searchCondition = "TITLE";
 		this.searchKeyword = "";
 	}

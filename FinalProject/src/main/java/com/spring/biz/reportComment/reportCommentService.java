@@ -13,4 +13,5 @@ public interface reportCommentService {
 	int getTotalPages(SearchCriteria cri);									//페이징
 	List<reportCommentVO> getReportCommentDetail(reportCommentVO vo);		//상세정보
 	int getValid(reportCommentVO vo);										//신고 중복체크
+	void updateReportComment(reportCommentVO vo);
 }

@@ -53,7 +53,7 @@
 						$resultMsg.html('아이디가 중복됩니다');
 						$resultMsg.css('color','red');
 						$('input[name=idChk]').val("invalid");
-						alert(data);
+						
 					} else {
 						$resultMsg.html('사용가능한 아이디 입니다');
 						$resultMsg.css('color','green');

@@ -19,4 +19,8 @@ public interface ReportReviewService {
 	List<ReportReviewVO> getReportReviewDetail(ReportReviewVO vo);
 	
 	int getValid(ReportReviewVO vo);					//신고 중복체크
+	
+	void updateReportReview(ReportReviewVO vo);
+	
+	void deleteReportReview(ReportReviewVO vo);
 }

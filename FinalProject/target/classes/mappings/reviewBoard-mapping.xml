@@ -7,4 +7,10 @@
 		<![CDATA[ delete from reviewboard where seq = #{seq}
 		]]>
 	</delete>
+	<select id="getBoard">
+		<![CDATA[
+			select * from "reviewboard" where bseq = #{seq}
+		]]>
+			
+	</select>
 </mapper>

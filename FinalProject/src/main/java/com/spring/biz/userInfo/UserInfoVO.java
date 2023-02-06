@@ -9,6 +9,20 @@ public class UserInfoVO {
 	private int point;
 	private String profile;
 	private MultipartFile file;
+	private int reportCount;
+	private String report;
+	public int getReportCount() {
+		return reportCount;
+	}
+	public void setReportCount(int reportCount) {
+		this.reportCount = reportCount;
+	}
+	public String getReport() {
+		return report;
+	}
+	public void setReport(String report) {
+		this.report = report;
+	}
 	public MultipartFile getFile() {
 		return file;
 	}

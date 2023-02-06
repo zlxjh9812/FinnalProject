@@ -17,6 +17,15 @@
 <script type="text/javascript">
 
 </script>
+<style>
+<!--
+
+-->
+#gender{
+	display: flex;
+    justify-content: space-evenly;
+}
+</style>
 <form action="insertUser.do" class="validation-form" id="frm" method = "post">
 <div class="member">
        <!-- 1. 로고 -->
@@ -50,6 +59,19 @@
             <b>이름</b>
             <input type="text" id="name" name="name" >
         </div>
+        <div class="field">
+        
+            <b>성별</b>
+            <div id = "gender">
+            <input type="radio" id="gender" name="gender" value="M" ><label>남자</label>
+            <input type="radio" id="gender" name="gender" value="W" ><label>여자</label>
+            </div>
+            <div id = "age">
+            <b>생년월일</b>
+            <input type = "number" id = "birth" name = "birth" placeholder="'-'없이 8자를 입력해주세요">
+            </div>
+        </div>
+        
 
 		 <div class="field tel-number">
            <b>별명</b>

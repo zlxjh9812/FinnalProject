@@ -10,13 +10,14 @@
 		<result property="tel" column="tel"/>
 		<result property="email" column="name"/>
 		<result property="role" column="role"/>
-		
+		<result property="birth" column="birth"/>
+		<result property="gender" column="gender"/>
 	</resultMap>
 
 	<!-- 회원가입(User) -->
 	<insert id="insertUser">
-		<![CDATA[ INSERT INTO "User"("UserId","password","tel","email","name","role")
-		VALUES (#{UserId},#{password},#{tel},#{email},#{name},'사용자')
+		<![CDATA[ INSERT INTO "User"("UserId","password","tel","email","name","role","birth","gender")
+		VALUES (#{UserId},#{password},#{tel},#{email},#{name},'사용자',#{birth},#{gender})
 		]]>
 	</insert>
 	

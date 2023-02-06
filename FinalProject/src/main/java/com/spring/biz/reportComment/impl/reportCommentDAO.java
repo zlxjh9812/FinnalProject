@@ -30,4 +30,8 @@ public class reportCommentDAO {
 	public int getValid(reportCommentVO vo) {
 		return mybatis.selectOne("reportCommentDAO.getInvalid",vo);
 	}
+	public void updateRepoerComment(reportCommentVO vo) {
+		mybatis.update("reportCommentDAO.updateReortComment",vo);
+	}
+	
 }

@@ -20,4 +20,19 @@
 		select * from "UserInfo" where "UserId" = #{UserId} 
 	]]>
 	</select>
+	<update id="updateUserReportCount">
+	<![CDATA[
+		update "UserInfo" set "reportCount" = (select nvl (max("reportCount"),0) +1 from (select * from "UserInfo" where "UserId" = #{UserId})) where "UserId" = #{UserId}
+		]]>
+	</update>
+	<update id="updateUserReportY">
+	<![CDATA[
+		update "UserInfo" set "report" = 'Y' where "UserId" = #{UserId}
+	]]>
+	</update>
+	<update id="updateUserReportN">
+	<![CDATA[
+		update "UserInfo" set "report" = 'N' where "UserId" = #{UserId}
+	]]>
+	</update>
 </mapper>

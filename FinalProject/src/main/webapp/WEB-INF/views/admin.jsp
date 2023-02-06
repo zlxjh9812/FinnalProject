@@ -172,10 +172,10 @@ body{
       <td>${list.targetID }</td>
       <input type ="hidden" value = "${list.tableNum }" id = "${list.tableNum }">
       <td id = "table${list.tableNum }">${list.value }</td>
-      <td id = ${list.tableNum }><a href = "getboard.do?seq=${list.seq }">내용보기</a></td>
+      <td id = ${list.tableNum }><a href = "getBoard.do?bseq=${list.seq }">내용보기</a></td>
        <td><a href = "javascript:void(0);onclick:window.open('getReportDetail.do?seq=${list.seq }', '신고 상세정보', 
            'width=500, height=700, scrollbars=yes,resizable=no');">사유보기</a></td>
-      <td><button id="mail-Check-Btn">수정</button></td>
+      <td><button id="mail-Check-Btn"><a href="updateReportReview.do?seq=${list.seq }&targetID=${list.targetID }">회원 제재</a></button></td>
     </tr>
     
     </c:forEach>

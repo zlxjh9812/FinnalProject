@@ -18,7 +18,7 @@
 	<!-- error 처리 (Annotation 방식), Json, XML data 변환 형식에도 사용됨 -->
 	<mvc:annotation-driven></mvc:annotation-driven>
 	
-	<!-- error 처리 (XML 방식) -->
+	<!-- error 처리 (XML 방식) 
 	<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 		<property name="exceptionMappings">
 			<props>
@@ -32,6 +32,7 @@
 		</property>
 		<property name="defaultErrorView" value="common/error.jsp"/>
 	</bean>
+	-->
 	<!-- 
 <context:property-placeholder location="/email.properties"/>
  -->

@@ -29,5 +29,23 @@ public class UserInfoServiceImpl implements UserInfoService{
 		return userInfoDAO.getUserInfo(vo);
 	}
 
+	@Override
+	public void updateUserReportCount(UserInfoVO vo) {
+		// TODO Auto-generated method stub
+		userInfoDAO.updateUserReportCount(vo);
+	}
+
+	@Override
+	public void updateUserReportY(UserInfoVO vo) {
+		// TODO Auto-generated method stub
+		userInfoDAO.updateUserReportY(vo);
+	}
+
+	@Override
+	public void updateUserReportN(UserInfoVO vo) {
+		// TODO Auto-generated method stub
+		userInfoDAO.updateUserReportN(vo);
+	}
+
 	
 }
