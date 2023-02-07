@@ -49,4 +49,10 @@ public class reportCommentImpl implements reportCommentService{
 		reportcommentDAO.updateRepoerComment(vo);
 	}
 
+	@Override
+	public void deleteReportComment(reportCommentVO vo) {
+		reportcommentDAO.deleteReportComment(vo);
+		
+	}
+
 }

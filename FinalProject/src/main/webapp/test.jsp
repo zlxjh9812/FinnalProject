@@ -58,6 +58,7 @@ select.addEventListener("change", function(e) {
     select = e.target.value;
     console.log(" select",sel);
     sel = e.target.value;
+    $('#inputTest').val(sel);
     //alert(select);
 		//값이 바뀔때마다 찍힘
 });
@@ -103,12 +104,13 @@ cnt.addEventListener("click",function(){
 	<a href="test123.do">test</a>
 	
 	  <select id="SC" name="SC" >
-		<option value="movie">영화</option>
-		<option value="tv">TV</option>
-		<option value="review">리뷰</option>
-		<option value="tag">태그</option>
-		<option value="SearchId">아이디검색</option>
+		<option value="1">영화</option>
+		<option value="2">TV</option>
+		<option value="3">리뷰</option>
+		<option value="4">태그</option>
+		<option value="5">아이디검색</option>
 	</select>
+	<input type="text" id = "inputTest" name = "boardNum">
 	<button id = "Test">a</button>
 <form action="testTag.do" method="post" id = "frm">
 <input name='basic'>

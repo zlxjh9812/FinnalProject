@@ -33,5 +33,8 @@ public class reportCommentDAO {
 	public void updateRepoerComment(reportCommentVO vo) {
 		mybatis.update("reportCommentDAO.updateReortComment",vo);
 	}
+	public void deleteReportComment(reportCommentVO vo) {
+		mybatis.delete("reportCommentDAO.deleteReportComment",vo);
+	}
 	
 }

@@ -65,7 +65,9 @@
 		]]>
 	</select>
 	<update id="updateReortReview">
-		<![CDATA[update "reviewboard" set "report"='Y' where "bseq" = #{seq}]]>
+		<![CDATA[
+		update "reviewboard" set "report"='Y' where "bseq" = #{seq}
+		]]>
 	</update>
 	<delete id="deleteReportReview">
 		<![CDATA[

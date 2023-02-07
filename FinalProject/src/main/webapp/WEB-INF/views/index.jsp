@@ -344,6 +344,58 @@ border-radius: 15px;
           slidesToShow: 5,
           slidesToScroll: 3,
         } );
+        
+        $("#write").on("click", function(e) {
+        	if($('#UserId').val() == ""){
+			console.log(1);
+        	}
+			
+			$.ajax({
+				url : "write.do",
+				data : {
+					"UserId" : $('#UserId').val()
+				},
+				success : function(data) {
+					if (data === '1') {
+						
+						
+						alert("권한이 존재하지 않습니다. 로그인 후 다시 시도해 주세요.");
+						return false;
+					} else if(data === '2'){
+						alert("현재 제재중인 아이디 입니다. 자세한 내용은 FAQ 페이지 에서 확인해 주세요")
+						return false;
+					}else{
+						return location.href='writeGo.do';
+					}
+				},
+				error : function(req, status, err) {
+					console.log(req);
+				}
+			}); //ajax
+		});// idCheck
+		$('#mail-Check-Btn').click(function() {
+			const eamil = $('#email').val(); // 이메일 주소값 얻어오기!
+			const tel = $('#tel').val();
+			console.log('완성된 이메일 : ' + eamil); // 이메일 오는지 확인
+			const checkInput = $('.mail-check-input') // 인증번호 입력하는곳 
+			
+			$.ajax({
+				type : 'get',
+				url : 'findEmailCheck.do?email='+eamil+"&tel="+tel, // GET방식이라 Url 뒤에 email을 뭍힐수있다.
+				success : function (data) {
+					if(data === "false"){
+						alert("해당하는 이메일이 없습니다")
+					}else{
+						checkInput.attr('disabled',false);
+						code =data;
+						alert('인증번호가 전송되었습니다.')
+						
+					}
+					
+					
+				}			
+			}); // end ajax
+		}); // end send eamil
       } );
       
   
@@ -392,7 +444,9 @@ border-radius: 15px;
           </a>
         </li><!-- End Search Icon-->
 
-
+ <script type="text/javascript">
+      
+		</script>
 
         <li class="nav-item dropdown pe-3">
 		<c:choose>
@@ -410,6 +464,7 @@ border-radius: 15px;
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
+            <input type="hidden" value="${User.userId }" id = "UserId">
               <h6>${User.userId }</h6>
               <span>${UserInfo.nickname }</span>
             </li>
@@ -436,7 +491,7 @@ border-radius: 15px;
             <li>
               <hr class="dropdown-divider">
             </li>
-
+			
             <li>
               <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
                 <i class="bi bi-question-circle"></i>
@@ -553,7 +608,14 @@ border-radius: 15px;
           <span>F.A.Q</span>
         </a>
       </li><!-- End F.A.Q Page Nav -->
-
+     
+		   <li class="nav-item">
+        <a class="nav-link collapsed" href="#" id = "write">
+          <i class="bi bi-question-circle"></i>
+          <span>글쓰기</span>
+        </a>
+      </li><!-- End F.A.Q Page Nav -->
+		
       <li class="nav-item">
         <a class="nav-link collapsed" href="pages-login.html">
           <i class="bi bi-box-arrow-in-right"></i>
@@ -561,7 +623,7 @@ border-radius: 15px;
         </a>
       </li><!-- End Login Page Nav -->
     </ul>
-
+ 
   </aside><!-- End Sidebar-->
   
   

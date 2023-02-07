@@ -139,21 +139,6 @@ public class adminControler {
 		Bvo.setUserId(Ivo.getUserId());
 		switch (count) {
 		case 3: Bvo.setDate(3);
-				break;
-
-		case 6: Bvo.setDate(5);
-				break;
-
-		case 9: Bvo.setDate(10);
-				break;
-
-		case 12: Bvo.setDate(20);
-				break;
-
-		case 24: Bvo.setDate(50);
-				break;
-			
-		}
 		if(userBlackListService.getUser(Bvo)!=null) {
 			userBlackListService.updateReportUser(Bvo);
 			userInfoService.updateUserReportY(Ivo);
@@ -161,7 +146,121 @@ public class adminControler {
 			userBlackListService.insertReportUser(Bvo);
 			userInfoService.updateUserReportY(Ivo);
 		}
+				break;
+
+		case 6: Bvo.setDate(5);
+		if(userBlackListService.getUser(Bvo)!=null) {
+			userBlackListService.updateReportUser(Bvo);
+			userInfoService.updateUserReportY(Ivo);
+		}else {
+			userBlackListService.insertReportUser(Bvo);
+			userInfoService.updateUserReportY(Ivo);
+		}
+				break;
+
+		case 9: Bvo.setDate(10);
+		if(userBlackListService.getUser(Bvo)!=null) {
+			userBlackListService.updateReportUser(Bvo);
+			userInfoService.updateUserReportY(Ivo);
+		}else {
+			userBlackListService.insertReportUser(Bvo);
+			userInfoService.updateUserReportY(Ivo);
+		}
+				break;
+
+		case 12: Bvo.setDate(20);
+		if(userBlackListService.getUser(Bvo)!=null) {
+			userBlackListService.updateReportUser(Bvo);
+			userInfoService.updateUserReportY(Ivo);
+		}else {
+			userBlackListService.insertReportUser(Bvo);
+			userInfoService.updateUserReportY(Ivo);
+		}
+				break;
+
+		case 24: Bvo.setDate(50);
+		if(userBlackListService.getUser(Bvo)!=null) {
+			userBlackListService.updateReportUser(Bvo);
+			userInfoService.updateUserReportY(Ivo);
+		}else {
+			userBlackListService.insertReportUser(Bvo);
+			userInfoService.updateUserReportY(Ivo);
+		}
+				break;
+			
+		}
+		
 		return "redirect:getReviewReport.do";
+	}
+	@RequestMapping(value = "/updateReportComment.do")
+	public String updateReportComment(reportCommentVO vo,HttpServletResponse response,UserInfoVO Ivo,UserBlackListVO Bvo,MovieBoardVO Mvo) {
+		System.out.println("error1");
+		commentService.updateReportComment(vo);
+		System.out.println("error2");
+		commentService.deleteReportComment(vo);
+		System.out.println(vo.getTargetID());
+		Ivo.setUserId(vo.getTargetID());
+		Mvo.setBseq(vo.getSeq());
+		boardService.reportUpdateReviewY(Mvo);
+		System.out.println(Ivo.getUserId());
+		System.out.println(userInfoService.getUserInfo(Ivo));
+		userInfoService.updateUserReportCount(Ivo);
+		int count = userInfoService.getUserInfo(Ivo).getReportCount();
+		Bvo.setUserId(Ivo.getUserId());
+		switch (count) {
+		case 3: Bvo.setDate(3);
+		if(userBlackListService.getUser(Bvo)!=null) {
+			userBlackListService.updateReportUser(Bvo);
+			userInfoService.updateUserReportY(Ivo);
+		}else {
+			userBlackListService.insertReportUser(Bvo);
+			userInfoService.updateUserReportY(Ivo);
+		}
+				break;
+
+		case 6: Bvo.setDate(5);
+		if(userBlackListService.getUser(Bvo)!=null) {
+			userBlackListService.updateReportUser(Bvo);
+			userInfoService.updateUserReportY(Ivo);
+		}else {
+			userBlackListService.insertReportUser(Bvo);
+			userInfoService.updateUserReportY(Ivo);
+		}
+				break;
+
+		case 9: Bvo.setDate(10);
+		if(userBlackListService.getUser(Bvo)!=null) {
+			userBlackListService.updateReportUser(Bvo);
+			userInfoService.updateUserReportY(Ivo);
+		}else {
+			userBlackListService.insertReportUser(Bvo);
+			userInfoService.updateUserReportY(Ivo);
+		}
+				break;
+
+		case 12: Bvo.setDate(20);
+		if(userBlackListService.getUser(Bvo)!=null) {
+			userBlackListService.updateReportUser(Bvo);
+			userInfoService.updateUserReportY(Ivo);
+		}else {
+			userBlackListService.insertReportUser(Bvo);
+			userInfoService.updateUserReportY(Ivo);
+		}
+				break;
+
+		case 24: Bvo.setDate(50);
+		if(userBlackListService.getUser(Bvo)!=null) {
+			userBlackListService.updateReportUser(Bvo);
+			userInfoService.updateUserReportY(Ivo);
+		}else {
+			userBlackListService.insertReportUser(Bvo);
+			userInfoService.updateUserReportY(Ivo);
+		}
+				break;
+			
+		}
+	
+		return "redirect:reportComment.do";
 	}
 	
 }

@@ -60,6 +60,11 @@
 		]]>
 	</select>
 	<update id="updateReortComment">
-		<![CDATA[update  "reportComment" set "report"='y' where "cseq" = #{seq};]]>
+		<![CDATA[update  "usercomment" set "report"='y' where "cseq" = #{seq}]]>
 	</update>
+	<delete id="deleteReportComment">
+		<![CDATA[
+			delete from "reportComment" where "cseq" = #{seq}
+		]]>
+	</delete>
 </mapper>
