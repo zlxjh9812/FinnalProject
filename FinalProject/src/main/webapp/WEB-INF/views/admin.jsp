@@ -507,13 +507,9 @@ border-radius: 15px;
   
   
    <main id="main" class="main" style="text-align: center;">
-   <h1>신고된 전체 유저</h1>
+   <h1>신고된 전체 리뷰</h1>
 <div id = "reportTable">
-	<form action="reportSeach">
-	<label>게시판 검색</label>
-	<input type = "text">
-	<input type = "submit" value ="검색하기">
-	</form>
+	
 	<table class="table" >
 	
   <thead>
@@ -573,7 +569,7 @@ border-radius: 15px;
 	<input type='hidden' name='searchKeyword'	value='<c:out value="${ pageMaker.cri.searchKeyword }"/>'>
 </form>
 
-<a href="insertBoard.jsp"><spring:message code="message.board.list.link.insertBoard" /></a>
+
 <script>
 	$(function(){
 		$(".paginate_button a").on("click",

@@ -449,6 +449,7 @@ border-radius: 15px;
      
      
        
+       
 
 
     
@@ -507,23 +508,19 @@ border-radius: 15px;
   
   
    <main id="main" class="main" style="text-align: center;">
-   <h1>신고된 전체 유저</h1>
-<<div id = "reportTable">
-	<form action="reportSeach">
-	<label>게시판 검색</label>
-	<input type = "text">
-	<input type = "submit" value ="검색하기">
-	</form>
+   <h1>신고된 전체 댓글</h1>
+ <div id = "reportTable">
+	
 	<table class="table" >
 	
   <thead>
   	 	
     <tr class = "table-secondary">
     	
-      <th scope="col">신고된 게시글 번호</th>
+      <th scope="col">신고된 댓글 번호</th>
       <th scope="col">신고된 아이디</th>
       <th scope="col">신고된 게시판</th>
-      <th scope="col">신고 글</th>
+      <th scope="col">신고 댓글</th>
       <th scope="col">신고 사유</th>
       <th scope="col">삭제 </th>
     </tr>
@@ -573,7 +570,7 @@ border-radius: 15px;
 	<input type='hidden' name='searchKeyword'	value='<c:out value="${ pageMaker.cri.searchKeyword }"/>'>
 </form>
 
-<a href="insertBoard.jsp"><spring:message code="message.board.list.link.insertBoard" /></a>
+
 <script>
 	$(function(){
 		$(".paginate_button a").on("click",
@@ -633,7 +630,7 @@ border-radius: 15px;
   </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
+	
   <!-- Vendor JS Files -->
   <!-- <script src="<c:url value="/resources/assets/vendor/apexcharts/apexcharts.min.js"/>"></script> -->
   <script src="<c:url value="/resources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"/>"></script>
