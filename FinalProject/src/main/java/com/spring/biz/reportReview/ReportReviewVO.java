@@ -13,6 +13,7 @@ public class ReportReviewVO {
 	public int getRN() {
 		return RN;
 	}
+	
 	public void setRN(int rN) {
 		RN = rN;
 	}

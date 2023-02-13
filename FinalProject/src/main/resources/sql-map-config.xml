@@ -15,6 +15,7 @@
 		<typeAlias type="com.spring.biz.reportComment.reportCommentVO" alias="reportComment"/>
 		<typeAlias alias="board" type="com.spring.biz.board.MovieBoardVO"></typeAlias>
 		<typeAlias type="com.spring.biz.hashTag.HashTagVO" alias="hashTag"/>
+		<typeAlias type="com.spring.biz.movieGeners.MovieGenersVO" alias="MovieGeners"/>
 	</typeAliases>
 	
 	<!-- Sql Mapper 설정 -->
@@ -27,6 +28,7 @@
 		<mapper resource="mappings/tableNum-mapping.xml"/>
 		<mapper resource="mappings/board-mapping.xml"/>
 		<mapper resource="mappings/BlackList-mapping.xml"/>
+		<mapper resource="mappings/MovieGeners-mapping.xml"/>
 	</mappers>
 	
 	

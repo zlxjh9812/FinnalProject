@@ -49,7 +49,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <script src="https://kit.fontawesome.com/8e012a278c.js"></script>
 <script type="text/javascript" src="<c:url value="/resources/main.js"/>"></script>
-
+<script type="text/javascript" src="<c:url value="/resources/InsertAuthority.js"/>"></script>
   <!-- =======================================================
   * Template Name: NiceAdmin - v2.5.0
   * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
@@ -334,69 +334,7 @@ border-radius: 15px;
   
 </head>
     <script>
-      $( document ).ready( function() {
-    	  
-    	
-    	  
-        $( '.slider' ).slick( {
-          autoplay: true,
-          autoplaySpeed: 5000,
-          slidesToShow: 5,
-          slidesToScroll: 3,
-        } );
-        
-        $("#write").on("click", function(e) {
-        	if($('#UserId').val() == ""){
-			console.log(1);
-        	}
-			
-			$.ajax({
-				url : "write.do",
-				data : {
-					"UserId" : $('#UserId').val()
-				},
-				success : function(data) {
-					if (data === '1') {
-						
-						
-						alert("권한이 존재하지 않습니다. 로그인 후 다시 시도해 주세요.");
-						return false;
-					} else if(data === '2'){
-						alert("현재 제재중인 아이디 입니다. 자세한 내용은 FAQ 페이지 에서 확인해 주세요")
-						return false;
-					}else{
-						return location.href='writeGo.do';
-					}
-				},
-				error : function(req, status, err) {
-					console.log(req);
-				}
-			}); //ajax
-		});// idCheck
-		$('#mail-Check-Btn').click(function() {
-			const eamil = $('#email').val(); // 이메일 주소값 얻어오기!
-			const tel = $('#tel').val();
-			console.log('완성된 이메일 : ' + eamil); // 이메일 오는지 확인
-			const checkInput = $('.mail-check-input') // 인증번호 입력하는곳 
-			
-			$.ajax({
-				type : 'get',
-				url : 'findEmailCheck.do?email='+eamil+"&tel="+tel, // GET방식이라 Url 뒤에 email을 뭍힐수있다.
-				success : function (data) {
-					if(data === "false"){
-						alert("해당하는 이메일이 없습니다")
-					}else{
-						checkInput.attr('disabled',false);
-						code =data;
-						alert('인증번호가 전송되었습니다.')
-						
-					}
-					
-					
-				}			
-			}); // end ajax
-		}); // end send eamil
-      } );
+    
       
   
     </script>
@@ -693,7 +631,7 @@ border-radius: 15px;
                     <div class="image"><img src="<c:url value="/resources/images/${board.filename }"/>"></div>
                     <div class="cont">
                         <strong>${ board.title }</strong>
-                        <p>${board.content }</p>
+                    
                         <p>작성자:${board.nickname }</p>
                         <p>추천:${board.like_num} &nbsp&nbsp 비추:	 ${board.unlike_num}</p>
                         <a href="getBoard.do?bseq=${board.bseq }">바로가기</a>

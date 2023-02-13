@@ -262,5 +262,24 @@ public class adminControler {
 	
 		return "redirect:reportComment.do";
 	}
+	@RequestMapping(value = "deleteReportReview.do")
+	public String deleteReportRevew(ReportReviewVO vo,HttpServletResponse response) throws IOException {
+		reviewService.deleteReportReview(vo);
+		response.setContentType("text/html; charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        out.println("<script>alert('신고가 취소 되었습니다');  location.href='getReviewReport.do';</script>");
+        out.flush();
+		return  "redirect:getReviewReport.do";
+	}
+	
+	@RequestMapping(value = "deleteReportComment.do")
+	public String deleteReportComment(reportCommentVO vo,HttpServletResponse response) throws IOException {
+		commentService.deleteReportComment(vo);
+		response.setContentType("text/html; charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        out.println("<script>alert('신고가 취소 되었습니다'); location.href='getCommentReport.do';</script>");
+        out.flush();
+		return  "redirect:getCommentReport.do";
+	}
 	
 }

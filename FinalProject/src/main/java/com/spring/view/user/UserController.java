@@ -220,4 +220,8 @@ public class UserController {
 	public String updatePasswordGo() {
 		return "updatePassword";
 	}
+	@RequestMapping(value = "sign_up.do")
+	public String sign_up() {
+		return "sign_up";
+	}
 }

@@ -10,6 +10,7 @@
 <center>
 	<h1>게시판 프로그램</h1>
 	<hr>
+	
 		<!-- <a> tag를 사용하여 server를 호출한 경우는 GET 방식임 -->
 		<a href="login.do">로그인</a><br><br><br>
 		<a href="getBoardList.do">글 목록 바로가기</a>

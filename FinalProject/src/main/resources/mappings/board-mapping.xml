@@ -16,13 +16,14 @@
 		<result property="cnt" column="CNT"/>
 		<result property="userId" column="USERID"/>
 		<result property="writdate" column="writedate"/>
-		
+		<result property="moviecode" column="moviecode"/>
+		<result property="contentType" column="contentType"/>
 	</resultMap>
 
 	<insert id="insertBoard">
-		 <![CDATA[INSERT INTO  "reviewboard"("bseq", "boardnum", "title", "nickname",  "content", "filename", "like_num", "unlike_num", "cnt", "UserId","writedate")
+		 <![CDATA[INSERT INTO  "reviewboard"("bseq", "boardnum", "title", "nickname",  "content", "filename", "like_num", "unlike_num", "cnt", "UserId","writedate","moviecode","contentType")
 		VALUES (#{bseq}, #{boardnum}, #{title},#{nickname}, #{content}, null
-		, 0, 0, 0, #{userId},sysdate)]]>
+		, 0, 0, 0, #{userId},sysdate,#{moviecode},#{contentType})]]>
 		
 		
 	</insert>
@@ -48,9 +49,7 @@
 	
 	<update id="updateBoard">
 		<![CDATA[
-			UPDATE "reviewboard" SET
-				"title" = #{title}, 
-				"content" = #{content} 
+			UPDATE "reviewboard" SET "title" = #{title}, "content" = #{content} ,"moviecode" = #{moviecode},"contentType" = #{contentType}
 			WHERE "bseq" = #{bseq}
 		]]>
 	</update>
@@ -102,10 +101,10 @@
 			SELECT ROWNUM RN, "bseq", "boardnum", "title", "nickname",  "content", "filename", "writedate", "like_num", "unlike_num", "cnt", "UserId"
 			FROM(
 				SELECT * 
-				FROM REVIEWBOARD 
+				FROM "reviewboard" 
 				WHERE 1=1
-				AND TITLE LIKE '%'||#{searchKeyword}||'%'
-		ORDER BY BSEQ DESC
+				AND "title" LIKE '%'||#{searchKeyword}||'%'
+		ORDER BY "bseq" DESC
 		) 
 			<![CDATA[
     		WHERE ROWNUM <= #{pageNum} * #{amount}
